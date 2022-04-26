@@ -1,14 +1,17 @@
-import React from 'react';
+import React  from 'react';
 import { useForm } from "react-hook-form";
+
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
 const AddService = () => {
      const { register, handleSubmit } = useForm();
+     
+
      const onSubmit = data => {
           console.log(data)
 
-          const url = `http://localhost:5000/service`;
+          const url = `https://afternoon-inlet-05262.herokuapp.com/service`;
           fetch(url, {
                method: 'POST',
                headers: {
@@ -20,7 +23,7 @@ const AddService = () => {
                .then(result => {
                     console.log('Success:', result);
                     toast("Thank you. Service added!")
-
+                    
                })
      };
      return (
@@ -33,7 +36,7 @@ const AddService = () => {
                     <input className='mb-2' placeholder='Photo URL' type="text" {...register("img")} />
                     <input className='mb-2' type="submit" value="Add Service" />
                </form>
-               <ToastContainer />
+              
           </div>
      );
 };
